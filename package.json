@@ -1,5 +1,18 @@
 {
-  "private": true,
+  "name": "@types/sails",
+  "version": "1.0.0",
+  "description": "TypeScript definitions for sails",
+  "license": "MIT",
+  "author": "Jimmy Cann <https://github.com/yjimk>",
+  "main": "./index.d.ts",
+  "repository": {
+      "type": "git",
+      "url": "https://www.github.com/yjimk/types-sails.git"
+  },
+  "scripts": {},
+  "dependencies": {},
+  "peerDependencies": {},
+  "typeScriptVersion": "2.0",
   "scripts": {
     "clean": "echo cleaning... && rm -rf dist/",
     "build": "echo building... && npm run clean && typings bundle -o dist/index.d.ts",
@@ -21,7 +34,7 @@
     "tap-spec": "^4.1.1",
     "ts-node": "^0.7.1",
     "tslint-config-typings": "^0.2.0",
-    "typescript": "^1.8.9",
+    "typescript": "^2.0.0",
     "typings": "^1.0.4"
   }
 }

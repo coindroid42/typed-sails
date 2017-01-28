@@ -1,33 +1,11 @@
-# Typed Sails
-
-[![CircleCI branch](https://img.shields.io/circleci/project/effervescentia/typed-sails/master.svg?maxAge=2592000)]()
-
-The type definition for [`sails`](https://github.com/balderdashy/sails)
-
-## LICENSE
-
-MIT
-
-## Contributing
-
-```sh
-# Fork this repo
-npm install
-
-npm run watch
-
-# add tests, make changes, pass tests ... then [ctrl+c]
-npm run publish
+# Installation
+```
+npm install --save @types/sails
+```
+or
+```
+yarn add @types/sails
 ```
 
-## Updating
-
-Update `typings.json/version` to match the source version you are typing against.
-e.g. if you are creating typings for `chai@3.5.0`, then:
-```js
-// typings.json
-{
-  "version": "3.5.0"
-  // ...
-}
-```
+# Why?
+This package contains TypeScript 2.0 type definitions for SailsJS. It is a fork from [Ben Teichman's](https://github.com/effervescentia) repo [typed-sails](https://github.com/effervescentia/typed-sails) updated for `@types/xxxx` compatibility in TypeScript 2.0+ and published to NPM.
