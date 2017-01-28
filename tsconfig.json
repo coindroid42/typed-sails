@@ -1,7 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "noImplicitAny": true,
     "declaration": true,
     "module": "commonjs",
@@ -15,6 +15,8 @@
     "typings/modules",
     "dist"
   ],
+  "baseUrl": "types",
+  "typeRoots": ["types"],
   "atom": {
     "rewriteTsconfig": true,
     "formatOnSave": true

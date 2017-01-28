@@ -1,10 +1,10 @@
 # Installation
 ```
-npm install --save @types/sails
+npm install --save typed-sails
 ```
 or
 ```
-yarn add @types/sails
+yarn add typed-sails
 ```
 
 # Why?
