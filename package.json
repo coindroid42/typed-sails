@@ -7,7 +7,7 @@
   "main": "./index.d.ts",
   "repository": {
       "type": "git",
-      "url": "https://www.github.com/yjimk/types-sails.git"
+      "url": "https://www.github.com/yjimk/typed-sails.git"
   },
   "scripts": {},
   "dependencies": {},

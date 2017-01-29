@@ -1,13 +1,3 @@
-import {
-  CookieOptions,
-  MediaType,
-  Request as ExprRequest,
-  Response as ExprResponse
-} from 'express';
-import { EventEmitter } from 'events';
-import { Readable, Writable } from 'stream';
-import { Collection } from 'mongodb';
-
 declare var sails: sails.Sails;
 
 declare namespace sails {
@@ -1037,5 +1027,3 @@ declare namespace sails {
   }
 
 }
-
-export = sails;
