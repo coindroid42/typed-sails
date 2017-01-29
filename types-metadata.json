@@ -1,0 +1,28 @@
+{
+    "name": "sails",
+    "libraryName": "Sails",
+    "sourceRepoURL": "https://www.github.com/DefinitelyTyped/DefinitelyTyped",
+    "data": {
+        "authors": "Jimmy Cann <https://github.com/yjimk/>",
+        "dependencies": {
+            "express": "*",
+        },
+        "pathMappings": {},
+        "libraryMajorVersion": 4,
+        "libraryMinorVersion": 0,
+        "typeScriptVersion": "2.0",
+        "libraryName": "Sails",
+        "typingsPackageName": "sails",
+        "projectName": "http://sailsjs.com",
+        "sourceRepoURL": "https://www.github.com/DefinitelyTyped/DefinitelyTyped",
+        "globals": [],
+        "declaredModules": [
+            "sails/."
+        ],
+        "files": [
+            "index.d.ts"
+        ],
+        "hasPackageJson": false
+    },
+    "isLatest": true
+}

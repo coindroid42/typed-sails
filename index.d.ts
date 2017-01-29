@@ -1,3 +1,8 @@
+import * as Express from 'express';
+import * as SocketIO from 'socket.io';
+import * as EventEmitter from 'events';
+import * as Stream from 'stream';
+
 declare var sails: sails.Sails;
 
 declare namespace sails {
@@ -53,8 +58,8 @@ declare namespace sails {
     lift(options?: any, cb?: (err: Error, sails: Sails) => void): void;
     lower(cb?: (err: Error) => void): void;
 
-    request(url: string | Request, cb?: (err: Error, response: any, body: any) => void): Readable;
-    request(url: string, body: any, cb?: (err: Error, response: any, body: any) => void): Readable;
+    request(url: string | Request, cb?: (err: Error, response: any, body: any) => void): Stream.Readable;
+    request(url: string, body: any, cb?: (err: Error, response: any, body: any) => void): Stream.Readable;
 
     getBaseUrl(): string;
     getRouteFor(target: string): Route;
@@ -64,7 +69,7 @@ declare namespace sails {
 
   type ApplicationLifecycle = 'ready' | 'lifted' | 'lowered';
 
-  interface Request extends ExprRequest {
+  interface Request extends Express.Request {
     /**
      * @http
      * @websocket
@@ -112,11 +117,14 @@ declare namespace sails {
     /**
      * @http
      */
-    accepts(type: string | string[]): any;
+    accepts(): string[];
+    accepts(type: string): string | boolean;
+    accepts(type: string[]): string | boolean;
+    accepts(...type: string[]): string | boolean;
     /**
      * @http
      */
-    accepted: MediaType[];
+    accepted: Express.MediaType[];
     /**
      * @http
      */
@@ -228,7 +236,7 @@ declare namespace sails {
     wantsJSON: boolean;
   }
 
-  interface Response extends ExprResponse {
+  interface Response extends Express.Response {
     /**
      * @http
      * @websocket
@@ -246,11 +254,11 @@ declare namespace sails {
     /**
      * @http
      */
-    cookie(name: string, value: string, opts?: CookieOptions): Response;
+    cookie(name: string, value: string, opts?: Express.CookieOptions): Response;
     /**
      * @http
      */
-    clearCookie(name: string, opts?: CookieOptions): Response;
+    clearCookie(name: string, opts?: Express.CookieOptions): Response;
     /**
      * @http
      */
@@ -424,16 +432,11 @@ declare namespace sails {
     findOrCreate(criteria: any | any[], params: any | any[], cb?: (err: Error, createdOrFound?: Result | Result[]) => void): WaterlinePromise<Result | Result[]>;
 
     /**
-     * @mongo
-     */
-    native(cb: (err: Error, mongoCollection: Collection) => void): WaterlinePromise<Collection>;
-
-    /**
      * @sql
      */
     query(criteria: string, cb?: (err: Error, found: Result[]) => void): WaterlinePromise<Result[]>;
 
-    stream(criteria: any, overrides?: { end: Function, write: Function }): Writable;
+    stream(criteria: any, overrides?: { end: Function, write: Function }): Stream.Writable;
 
     update(criteria: any | any[], updates: any | any[], cb?: (err: Error, updated: any[]) => void): WaterlinePromise<Result[]>;
 
@@ -1027,3 +1030,4 @@ declare namespace sails {
   }
 
 }
+export = sails;
