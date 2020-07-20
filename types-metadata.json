@@ -1,28 +1,22 @@
 {
-    "name": "sails",
-    "libraryName": "Sails",
+    "authors": "Jimmy Cann <https://github.com/yjimk>",
+    "libraryDependencies": [],
+    "moduleDependencies": [],
+    "libraryMajorVersion": 1,
+    "libraryMinorVersion": 0,
+    "typeScriptVersion": "2.0",
+    "libraryName": "sails",
+    "typingsPackageName": "sails",
+    "projectName": "https://github.com/yjimk/types-sails",
     "sourceRepoURL": "https://www.github.com/DefinitelyTyped/DefinitelyTyped",
-    "data": {
-        "authors": "Jimmy Cann <https://github.com/yjimk/>",
-        "dependencies": {
-            "express": "*",
-        },
-        "pathMappings": {},
-        "libraryMajorVersion": 4,
-        "libraryMinorVersion": 0,
-        "typeScriptVersion": "2.0",
-        "libraryName": "Sails",
-        "typingsPackageName": "sails",
-        "projectName": "http://sailsjs.com",
-        "sourceRepoURL": "https://www.github.com/DefinitelyTyped/DefinitelyTyped",
-        "globals": [],
-        "declaredModules": [
-            "sails/."
-        ],
-        "files": [
-            "index.d.ts"
-        ],
-        "hasPackageJson": false
-    },
-    "isLatest": true
+    "sourceBranch": "master",
+    "globals": [],
+    "declaredModules": [
+        "sails"
+    ],
+    "files": [
+        "index.d.ts"
+    ],
+    "hasPackageJson": true,
+    "contentHash": "f9312aa6f1f109e52dca067f860c56dc23ce58fcde07d377b6f0c29a9a832d3b"
 }

@@ -24,9 +24,5 @@
   "formatCodeOptions": {
     "indentSize": 2,
     "tabSize": 2
-  },
-  "files": [
-    "index.d.ts",
-    "sails-tests.ts"
-  ]
+  }
 }

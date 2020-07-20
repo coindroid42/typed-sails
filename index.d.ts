@@ -1,7 +1,12 @@
-import * as Express from 'express';
-import * as SocketIO from 'socket.io';
-import * as EventEmitter from 'events';
-import * as Stream from 'stream';
+import {
+  CookieOptions,
+  MediaType,
+  Request as ExprRequest,
+  Response as ExprResponse
+} from 'express';
+import { EventEmitter } from 'events';
+import { Readable, Writable } from 'stream';
+// import { Collection } from 'mongodb';
 
 declare var sails: sails.Sails;
 
@@ -11,7 +16,7 @@ declare namespace sails {
     constructor(config?: any): void;
     log: Logger;
     models: any;
-    config: any & {
+    config: {
       explicitHost?: string,
       proxyHost?: string,
       proxyPort?: number,
@@ -32,7 +37,7 @@ declare namespace sails {
       views: Config.Views
     };
     sockets: any;
-    io: SocketIO.Server;
+    // io: SocketIO.Server;
     hooks: any & {
       blueprints: Hooks.Blueprints & any,
       controllers: Hooks.Controllers & any,
@@ -58,18 +63,36 @@ declare namespace sails {
     lift(options?: any, cb?: (err: Error, sails: Sails) => void): void;
     lower(cb?: (err: Error) => void): void;
 
-    request(url: string | Request, cb?: (err: Error, response: any, body: any) => void): Stream.Readable;
-    request(url: string, body: any, cb?: (err: Error, response: any, body: any) => void): Stream.Readable;
+    request(url: string | Request, cb?: (err: Error, response: any, body: any) => void): Readable;
+    request(url: string, body: any, cb?: (err: Error, response: any, body: any) => void): Readable;
 
     getBaseUrl(): string;
     getRouteFor(target: string): Route;
     getUrlFor(target: string): string;
     after(event: string, listener: Function): this;
+    after(event: string[], listener: Function): this;
+
+    router: Router
+  }
+
+  interface Router {
+    bind(path: string, target: string | Function | string[] | Function[] | RouterObject, method?: string, options?: any): this;
+    unbind(route: Route): void;
+  }
+
+  interface Route {
+    path: string;
+    method: string;
+  }
+
+  interface RouterObject {
+    target:any;
+    fn: any;
   }
 
   type ApplicationLifecycle = 'ready' | 'lifted' | 'lowered';
 
-  interface Request extends Express.Request {
+  interface Request /*extends ExprRequest*/ {
     /**
      * @http
      * @websocket
@@ -102,6 +125,7 @@ declare namespace sails {
      * @websocket
      */
     param(name: string, defaultValue?: any): any;
+    allParams(): any;
     /**
      * @http
      */
@@ -117,14 +141,11 @@ declare namespace sails {
     /**
      * @http
      */
-    accepts(): string[];
-    accepts(type: string): string | boolean;
-    accepts(type: string[]): string | boolean;
-    accepts(...type: string[]): string | boolean;
+    accepts(type: string | string[]): any;
     /**
      * @http
      */
-    accepted: Express.MediaType[];
+    accepted: MediaType[];
     /**
      * @http
      */
@@ -236,7 +257,7 @@ declare namespace sails {
     wantsJSON: boolean;
   }
 
-  interface Response extends Express.Response {
+  interface Response /*extends ExprResponse*/ {
     /**
      * @http
      * @websocket
@@ -254,11 +275,11 @@ declare namespace sails {
     /**
      * @http
      */
-    cookie(name: string, value: string, opts?: Express.CookieOptions): Response;
+    cookie(name: string, value: string, opts?: CookieOptions): Response;
     /**
      * @http
      */
-    clearCookie(name: string, opts?: Express.CookieOptions): Response;
+    clearCookie(name: string, opts?: CookieOptions): Response;
     /**
      * @http
      */
@@ -432,11 +453,16 @@ declare namespace sails {
     findOrCreate(criteria: any | any[], params: any | any[], cb?: (err: Error, createdOrFound?: Result | Result[]) => void): WaterlinePromise<Result | Result[]>;
 
     /**
+     * @mongo
+     */
+    // native(cb: (err: Error, mongoCollection: Collection) => void): WaterlinePromise<Collection>;
+
+    /**
      * @sql
      */
     query(criteria: string, cb?: (err: Error, found: Result[]) => void): WaterlinePromise<Result[]>;
 
-    stream(criteria: any, overrides?: { end: Function, write: Function }): Stream.Writable;
+    stream(criteria: any, overrides?: { end: Function, write: Function }): Writable;
 
     update(criteria: any | any[], updates: any | any[], cb?: (err: Error, updated: any[]) => void): WaterlinePromise<Result[]>;
 
@@ -1030,4 +1056,5 @@ declare namespace sails {
   }
 
 }
-export = sails;
+
+// export = sails;

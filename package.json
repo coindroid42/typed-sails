@@ -1,20 +1,73 @@
 {
-    "name": "@types/sails",
-    "version": "1.0.3",
-    "description": "TypeScript definitions for Sails",
-    "license": "MIT",
-    "author": "Jimmy Cann <https://github.com/yjimk/>",
-    "main": "",
-    "repository": {
-        "type": "git",
-        "url": "https://www.github.com/DefinitelyTyped/DefinitelyTyped.git"
-    },
-    "scripts": {},
-    "dependencies": {
-        "@types/express": "*",
-        "@types/node": "*",
-        "@types/socket.io": "*",
-    },
-    "peerDependencies": {},
-    "typeScriptVersion": "2.0"
+  "_from": "typed-sails",
+  "_id": "typed-sails@1.0.2",
+  "_inBundle": false,
+  "_integrity": "sha1-tsgeHfUb1XIQTtZf9chaeYt4rnk=",
+  "_location": "/typed-sails",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "typed-sails",
+    "name": "typed-sails",
+    "escapedName": "typed-sails",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/typed-sails/-/typed-sails-1.0.2.tgz",
+  "_shasum": "b6c81e1df51bd572104ed65ff5c85a798b78ae79",
+  "_spec": "typed-sails",
+  "_where": "/home/yroot/gfcafe",
+  "author": {
+    "name": "Jimmy Cann",
+    "email": "https://github.com/yjimk"
+  },
+  "bugs": {
+    "url": "https://github.com/yjimk/types-sails/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {},
+  "deprecated": false,
+  "description": "TypeScript definitions for sails",
+  "devDependencies": {
+    "blue-tape": "^0.2.0",
+    "onchange": "^2.2.0",
+    "sails": "^0.12.3",
+    "tap-spec": "^4.1.1",
+    "ts-node": "^0.7.1",
+    "tslint-config-typings": "^0.2.0",
+    "typescript": "^2.0.0",
+    "typings": "^1.0.4"
+  },
+  "homepage": "https://github.com/yjimk/types-sails#readme",
+  "license": "MIT",
+  "main": "./index.d.ts",
+  "name": "typed-sails",
+  "peerDependencies": {},
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yjimk/types-sails.git"
+  },
+  "scripts": {
+    "build": "echo building... && npm run clean && typings bundle -o dist/index.d.ts",
+    "build+test": "npm run build && npm run source-test+test",
+    "clean": "echo cleaning... && rm -rf dist/",
+    "lint": "echo linting... && tslint \"**/*.ts\" -e \"source/**\" -e \"source-test/**\" -e \"dist/**\" -e \"node_modules/**\" -e \"typings/**\"",
+    "lint+build": "npm run lint && npm run build",
+    "lint+build+test": "npm run lint && npm run build+test",
+    "prepublish": "typings install",
+    "publish": "npm -s run lint+build && echo please publish to typings/registry",
+    "source-test": "echo source-testing... &&  echo source-test is not specified",
+    "source-test+test": "npm run source-test && npm test",
+    "test": "echo testing... && npm run build && cd test && ts-node ../node_modules/blue-tape/bin/blue-tape \"**/*.ts\" | tap-spec",
+    "watch": "onchange \"**/*.ts\" -i -e \"dist/**\" -- npm -s run build+test"
+  },
+  "typeScriptVersion": "2.0",
+  "version": "1.0.2"
 }
