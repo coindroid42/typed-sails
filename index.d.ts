@@ -1057,4 +1057,4 @@ declare namespace sails {
 
 }
 
-// export = sails;
+export = sails;
