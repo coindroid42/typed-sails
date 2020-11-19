@@ -345,6 +345,11 @@ declare namespace sails {
      * @websocket
      */
     serverError(data?: any, pathToView?: string): void;
+        /**
+     * @http
+     * @websocket
+     */
+    redirect(url: string): Response;
   }
 
   interface RouteTarget {
