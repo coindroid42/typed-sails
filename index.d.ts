@@ -364,11 +364,6 @@ declare namespace sails {
     where: any;
   }
 
-  interface Route {
-    method: string;
-    url: string;
-  }
-
   interface Socket {
     blast(data: any, socketToOmit?: Request): void;
     blast(eventName: string, data: any, socketToOmit?: Request): void;
