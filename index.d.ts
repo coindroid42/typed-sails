@@ -1062,4 +1062,4 @@ declare namespace sails {
 
 }
 
-export = sails;
+export default sails;
